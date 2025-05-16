@@ -1,36 +1,150 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>İlahi Yazılar - Marjinal Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Damla Yayınları - Edebiyat Blogu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&family=Sacramento&display=swap');
+  body {
+    margin:0; background:#0d1b2a; color:#f0e6d2;
+    font-family: 'Merriweather', serif;
+  }
+  header {
+    background: #1b263b;
+    padding: 1rem 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #f4d35e;
+    text-align:center;
+    letter-spacing: 0.1em;
+    box-shadow: 0 2px 8px #0008;
+  }
+  #container {
+    display: flex;
+    min-height: 90vh;
+  }
+  nav {
+    width: 220px;
+    background: #162447;
+    padding: 1rem 1.5rem;
+    box-shadow: inset -3px 0 6px #0008;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+  }
+  nav h2 {
+    color: #f4d35e;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #f4d35e;
+    padding-bottom: 0.3rem;
+  }
+  nav ul {
+    list-style:none; padding:0;
+  }
+  nav ul li {
+    margin: 0.8rem 0;
+    cursor: pointer;
+    color: #f0e6d2;
+    transition: color 0.3s ease;
+  }
+  nav ul li:hover {
+    color: #f4d35e;
+  }
+  main {
+    flex:1;
+    padding: 2rem 3rem;
+    background: #1b263b;
+    overflow-y: auto;
+  }
+  article {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #f4d35e44;
+    padding-bottom: 1rem;
+  }
+  article h3 {
+    font-family: 'Playfair Display', serif;
+    color: #f4d35e;
+    font-size: 1.7rem;
+    margin-bottom: 0.3rem;
+  }
+  article p {
+    line-height: 1.5;
+    font-size: 1.05rem;
+    color: #ddd;
+  }
+  footer {
+    text-align:center;
+    padding: 1rem;
+    background: #0d1b2a;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #222;
+    font-family: 'Sacramento', cursive;
+  }
+  /* Responsive */
+  @media(max-width: 768px) {
+    #container {
+      flex-direction: column;
+    }
+    nav {
+      width: 100%;
+      box-shadow:none;
+      border-bottom: 2px solid #f4d35e;
+    }
+    main {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>İlahi Yazılar</h1>
-        <nav>
-            <ul>
-                <li class="active" data-cat="all">Tüm Yazılar</li>
-                <li data-cat="şiir">Şiir</li>
-                <li data-cat="öykü">Öykü</li>
-                <li data-cat="deneme">Deneme</li>
-                <li data-cat="felsefe">Felsefe</li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="posts">
-            <!-- Yazılar buraya JS ile yüklenecek -->
-        </section>
-    </main>
+<header>Damla Yayınları - İlahi Edebiyat Blogu</header>
 
-    <footer>
-        <p>© 2025 İlahi Yazılar Platformu | Tasarım Marjinal & Yaratıcı</p>
-    </footer>
+<div id="container">
+  <nav>
+    <h2>Kategoriler</h2>
+    <ul>
+      <li onclick="filterCategory('hepsi')">Hepsi</li>
+      <li onclick="filterCategory('şiir')">Şiir</li>
+      <li onclick="filterCategory('öykü')">Öykü</li>
+      <li onclick="filterCategory('deneme')">Deneme</li>
+      <li onclick="filterCategory('ilahi')">İlahi</li>
+    </ul>
+  </nav>
 
-    <script src="scripts.js"></script>
+  <main id="posts">
+    <article data-category="şiir">
+      <h3>Gül Solmadan Biter Çocukluklar</h3>
+      <p>Mücrim Meyva<br>Gül solmadan biter çocukluklar... (kısa giriş)</p>
+    </article>
+    <article data-category="deneme">
+      <h3>Mahcup Gürültü</h3>
+      <p>Derin bir sessizlik oluşmuştu ve asıl savaş başladı demekti bu... (kısa giriş)</p>
+    </article>
+    <article data-category="ilahi">
+      <h3>Xwedê Mezin e Kurê Min</h3>
+      <p>İlahi bir huzur ve umutla dolu metin... (kısa giriş)</p>
+    </article>
+  </main>
+</div>
+
+<footer>© 2025 Damla Yayınları | Ruhun İlahi Yolculuğu</footer>
+
+<script>
+  function filterCategory(cat) {
+    const articles = document.querySelectorAll('article');
+    if(cat === 'hepsi') {
+      articles.forEach(a => a.style.display = 'block');
+    } else {
+      articles.forEach(a => {
+        a.style.display = (a.dataset.category === cat) ? 'block' : 'none';
+      });
+    }
+  }
+</script>
+
 </body>
 </html>
+
