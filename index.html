@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>İlahi Edebiyat Platformu</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>İlahi Yazılar - Marjinal Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>İlahi Edebiyat Platformu</h1>
-    <nav>
-      <ul id="categories">
-        <li class="active" data-category="all">Tümü</li>
-        <li data-category="şiir">Şiir</li>
-        <li data-category="hikaye">Hikaye</li>
-        <li data-category="deneme">Deneme</li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>İlahi Yazılar</h1>
+        <nav>
+            <ul>
+                <li class="active" data-cat="all">Tüm Yazılar</li>
+                <li data-cat="şiir">Şiir</li>
+                <li data-cat="öykü">Öykü</li>
+                <li data-cat="deneme">Deneme</li>
+                <li data-cat="felsefe">Felsefe</li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="content">
-    <article data-category="şiir">
-      <h2>Mücrim Meyva</h2>
-      <p>Gül solmadan biter çocukluklar...</p>
-    </article>
-    <article data-category="hikaye" style="display:none">
-      <h2>Mahcup Gürültü</h2>
-      <p>Derin bir sessizlik oluşmuştu ve asıl savaş başladı demekti bu...</p>
-    </article>
-    <article data-category="deneme" style="display:none">
-      <h2>Deneme Başlığı</h2>
-      <p>Buraya deneme metni gelecek.</p>
-    </article>
-  </main>
+    <main>
+        <section id="posts">
+            <!-- Yazılar buraya JS ile yüklenecek -->
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <footer>
+        <p>© 2025 İlahi Yazılar Platformu | Tasarım Marjinal & Yaratıcı</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
