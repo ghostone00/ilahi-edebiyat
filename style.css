@@ -1,98 +1,53 @@
-/* Genel Ayarlar */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap');
+const posts = [
+    {
+        title: "Gül Solmadan Biter Çocukluklar",
+        category: "şiir",
+        content: `Gül solmadan biter çocukluklar
+Cemre henüz toprağa kök salmaz iken
+Örümcek ağları ile örülü kader çizilir
+Ve elma dalından kopar kimliksiz bir savaşa...`
+    },
+    {
+        title: "Mahcup Gürültü",
+        category: "deneme",
+        content: `Derin bir sessizlik oluşmuştu ve asıl savaş başladı demekti bu. Saat bilmem kaç ama akrep ağırbaşlı ilerlerken yelkovan sanki tanrıyla yüzleşmekten kaçarcasına süratliydi...`
+    },
+    {
+        title: "İlahi Tema Üzerine Düşünceler",
+        category: "felsefe",
+        content: `İlahi olanın insanda yarattığı huzur ve kaygı arasındaki ince çizgi, bizi yaşamın anlamına dair sorgulamaya sürükler...`
+    },
+    {
+        title: "Öyküden Sanata",
+        category: "öykü",
+        content: `Yollar uzun, gökyüzü masmavi... Her adımda içimde bir fırtına kopuyor, geçmişin izlerini sürüyorum...`
+    }
+];
 
-* {
-    margin: 0; padding: 0; box-sizing: border-box;
+const postsContainer = document.getElementById("posts");
+const navItems = document.querySelectorAll("nav ul li");
+
+function renderPosts(category = "all") {
+    postsContainer.innerHTML = "";
+    const filtered = category === "all" ? posts : posts.filter(p => p.category === category);
+    filtered.forEach(post => {
+        const postEl = document.createElement("article");
+        postEl.classList.add("post");
+        postEl.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.content}</p>
+        `;
+        postsContainer.appendChild(postEl);
+    });
 }
 
-body {
-    background: linear-gradient(135deg, #0d0d21, #2e1a47);
-    color: #e0d7f3;
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+navItems.forEach(item => {
+    item.addEventListener("click", () => {
+        navItems.forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+        renderPosts(item.dataset.cat);
+    });
+});
 
-header {
-    background: #1a1140cc;
-    padding: 20px 40px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-}
-
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 3rem;
-    color: #d8b4fe;
-    text-shadow: 0 0 10px #b683f9;
-    margin-bottom: 15px;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    list-style: none;
-}
-
-nav ul li {
-    cursor: pointer;
-    padding: 8px 18px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 25px;
-    transition: background 0.3s ease, color 0.3s ease;
-    user-select: none;
-}
-
-nav ul li:hover,
-nav ul li.active {
-    background: #d8b4fe;
-    color: #1a1140;
-    box-shadow: 0 0 15px #b683f9;
-}
-
-main {
-    flex: 1;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-.post {
-    background: #261b48cc;
-    padding: 25px 30px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    box-shadow: 0 0 12px #a38be9cc;
-    transition: transform 0.3s ease;
-}
-
-.post:hover {
-    transform: scale(1.03);
-}
-
-.post h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #c8a2ff;
-}
-
-.post p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ddd6fe;
-}
-
-footer {
-    text-align: center;
-    padding: 15px 10px;
-    background: #1a1140cc;
-    color: #cbbfff;
-    font-size: 0.9rem;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.6);
-}
-
+// İlk yüklemede tüm yazıları göster
+renderPosts();
